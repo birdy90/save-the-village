@@ -5,10 +5,24 @@ namespace UI
 {
     public class CloudController : MonoBehaviour
     {
+        /// <summary>
+        /// Image of the cloud
+        /// </summary>
         [SerializeField] private Image ImageComponent;
+        
+        /// <summary>
+        /// Sprite that will be set to this cloud
+        /// </summary>
         [SerializeField] private Sprite CloudSprite;
 
+        /// <summary>
+        /// Phase to make clouds move randomly
+        /// </summary>
         private float _phase;
+        
+        /// <summary>
+        /// Initial position of the cloud to calculate new positions relatively
+        /// </summary>
         private Vector3 _initialPosition;
 
         private void OnValidate()

@@ -10,6 +10,9 @@ namespace UI
             Time.timeScale = 1f;
         }
 
+        /// <summary>
+        /// Method to start playing
+        /// </summary>
         public void StartGame()
         {
             SceneManager.LoadScene("Scenes/GameScene");

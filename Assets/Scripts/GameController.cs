@@ -5,20 +5,54 @@ using UnityEngine.SceneManagement;
 
 public class GameController: MonoBehaviour
 {
+    /// <summary>
+    /// Link to a food controller
+    /// </summary>
     [SerializeField] private FoodController FoodController;
+    
+    /// <summary>
+    /// Link to a workers controller
+    /// </summary>
     [SerializeField] private UnitsController WorkersController;
+    
+    /// <summary>
+    /// Link to a defenders controller 
+    /// </summary>
     [SerializeField] private UnitsController DefendersController;
 
+    /// <summary>
+    /// Link to a game over panel
+    /// </summary>
     [SerializeField] private PopupController GameOverPanel;
+    
+    /// <summary>
+    /// Link to game over info text
+    /// </summary>
     [SerializeField] private TMP_Text GameOverText;
 
+    /// <summary>
+    /// Link to a win panel
+    /// </summary>
     [SerializeField] private PopupController WinPanel;
+    
+    /// <summary>
+    /// Link to a win panel
+    /// </summary>
     [SerializeField] private TMP_Text WinText;
 
+    /// <summary>
+    /// Link to a pause panel
+    /// </summary>
     [SerializeField] private PopupController PausePanel;
+    
+    /// <summary>
+    /// Link to a pause panel
+    /// </summary>
     [SerializeField] private TMP_Text PauseText;
 
-    private float _foodConsumtion;
+    /// <summary>
+    /// Link to a statistics counter
+    /// </summary>
     private StatisticsCounter _statisticsCounter;
 
     void OnValidate()
@@ -41,6 +75,9 @@ public class GameController: MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Recalculate food consumtion from current number of workers and defenders
+    /// </summary>
     public void RecalculateFoodConsumption()
     {
         var workers = WorkersController.Amount * WorkersController.FoodUpdateAmount /
@@ -52,6 +89,9 @@ public class GameController: MonoBehaviour
         FoodController.SetConsumtion(workers + defenders);
     }
 
+    /// <summary>
+    /// Show win panel
+    /// </summary>
     public void GameWon()
     {
         WinPanel.Show();
@@ -60,6 +100,9 @@ public class GameController: MonoBehaviour
                             $"<b>Врагов убито:</b> {_statisticsCounter.EnemiesDied}";
     }
 
+    /// <summary>
+    /// Show game over panel
+    /// </summary>
     public void GameOver()
     {
         GameOverPanel.Show();
@@ -68,6 +111,9 @@ public class GameController: MonoBehaviour
                             $"<b>Врагов убито:</b> {_statisticsCounter.EnemiesDied}";
     }
 
+    /// <summary>
+    /// Show pause panel
+    /// </summary>
     public void Pause()
     {
         if (PausePanel.IsActive)
@@ -83,11 +129,17 @@ public class GameController: MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Restart the game
+    /// </summary>
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// Go to main menu
+    /// </summary>
     public void GoToMenu()
     {
         SceneManager.LoadScene("Scenes/MainMenu");

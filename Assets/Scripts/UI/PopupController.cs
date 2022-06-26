@@ -6,13 +6,34 @@ namespace UI
 {
     public class PopupController : MonoBehaviour
     {
+        /// <summary>
+        /// Width of a popup
+        /// </summary>
         public float PopupWidth;
+        
+        /// <summary>
+        /// Height of a popup
+        /// </summary>
         public float PopupHeight;
         
+        /// <summary>
+        /// Link to a popup wrapper
+        /// </summary>
         [SerializeField] private GameObject PopupWrapper;
+        
+        /// <summary>
+        /// Image of a border to set its' color
+        /// </summary>
         [SerializeField] private Image Border;
+        
+        /// <summary>
+        /// Color of a border
+        /// </summary>
         [SerializeField] private Color BorderColor;
 
+        /// <summary>
+        /// Check whether popup is opened or not 
+        /// </summary>
         public bool IsActive => PopupWrapper.activeSelf;
 
         private void OnValidate()
@@ -26,6 +47,9 @@ namespace UI
             Border.color = BorderColor;
         }
 
+        /// <summary>
+        /// Show popup and set pause
+        /// </summary>
         public void Show()
         {
             if (!PopupWrapper) return;
@@ -34,6 +58,9 @@ namespace UI
             PopupWrapper.gameObject.SetActive(true);
         }
 
+        /// <summary>
+        /// Hide popup and continue game
+        /// </summary>
         public void Hide()
         {
             Time.timeScale = 1f;

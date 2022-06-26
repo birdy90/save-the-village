@@ -4,19 +4,49 @@ using Random = UnityEngine.Random;
 
 public class ArmyController : MonoBehaviour
 {
+    /// <summary>
+    /// Link to a DefendersController
+    /// </summary>
     [SerializeField] private ResourceController DefendersController;
 
+    /// <summary>
+    /// List of available sprites for units
+    /// </summary>
     public Sprite[] UnitSprites;
 
+    /// <summary>
+    /// Prefab of a unit to create instances from
+    /// </summary>
     public GameObject UnitPrefab;
 
+    /// <summary>
+    /// List of current existing units
+    /// </summary>
     private Stack<GameObject> _units;
 
+    /// <summary>
+    /// Previous amount of units. Used to check if number of units increased or decreased
+    /// </summary>
     private float _previousAmount = 0;
     
+    /// <summary>
+    /// Number of units on one line
+    /// </summary>
     private int _countOnOneline = 10;
+    
+    /// <summary>
+    /// Random shift of unit from it's calculated position
+    /// </summary>
     private int _randomShiftSize = 20;
+    
+    /// <summary>
+    /// Width of one line
+    /// </summary>
     private float _lineWidth = 90f;
+    
+    /// <summary>
+    /// Height of one line
+    /// </summary>
     private float _lineHeight = 500f;
 
     void Start()
@@ -24,7 +54,9 @@ public class ArmyController : MonoBehaviour
         _units = new Stack<GameObject>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Check the number of units, add or delete if needed
+    /// </summary>
     void Update()
     {
         var amountDiif = DefendersController.Amount - _previousAmount;
